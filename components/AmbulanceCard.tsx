@@ -1,6 +1,8 @@
 import {
     Dimensions,
     Image,
+    Linking,
+    Platform,
     StyleSheet,
     Text,
     TouchableOpacity,
@@ -10,6 +12,17 @@ import React from "react";
 const { width, height } = Dimensions.get("window");
 
 const AmbulanceCard = () => {
+    const onCallMobilePhone = async (phoneNumber: number) => {
+        if (Platform.OS === "android") {
+            await Linking.openURL(`tel:${phoneNumber}`);
+            return;
+        }
+
+        if (Platform.OS === "ios") {
+            await Linking.openURL(`telprompt:${phoneNumber}`);
+            return;
+        }
+    };
     return (
         <View style={styles.card}>
             <View
@@ -41,7 +54,12 @@ const AmbulanceCard = () => {
                     <Text>Rating: 5 ⭐️</Text>
                 </View>
             </View>
-            <TouchableOpacity style={styles.bookButton} onPress={() => {}}>
+            <TouchableOpacity
+                style={styles.bookButton}
+                onPress={() => {
+                    onCallMobilePhone(123456789);
+                }}
+            >
                 <Text
                     style={{
                         color: "#fff",

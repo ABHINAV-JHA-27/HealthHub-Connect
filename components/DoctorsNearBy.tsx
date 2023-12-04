@@ -9,8 +9,11 @@ import {
 } from "react-native";
 const { width, height } = Dimensions.get("window");
 
-const DoctorsNearBy = () => {
-    const [clicked, setClicked] = useState(false);
+type Props = {
+    onClick: () => void;
+};
+
+const DoctorsNearBy = (props: Props) => {
     return (
         <View style={styles.card}>
             <View
@@ -44,7 +47,7 @@ const DoctorsNearBy = () => {
             </View>
             <TouchableOpacity
                 style={styles.bookButton}
-                onPress={() => setClicked(!clicked)}
+                onPress={() => props.onClick()}
             >
                 <Text
                     style={{
@@ -53,7 +56,7 @@ const DoctorsNearBy = () => {
                         fontWeight: "bold",
                     }}
                 >
-                    {clicked ? "Booked" : "Book"}
+                    Book
                 </Text>
             </TouchableOpacity>
         </View>

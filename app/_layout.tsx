@@ -47,6 +47,12 @@ export default function Layout() {
                         headerShown: false,
                     }}
                 />
+                <Stack.Screen
+                    name="home/chat"
+                    options={{
+                        headerShown: false,
+                    }}
+                />
             </Stack>
         </AuthContext>
     );

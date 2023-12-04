@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import LottieView from "lottie-react-native";
 import React from "react";
 import { useNavigation } from "expo-router";
 const { width, height } = Dimensions.get("window");
@@ -35,6 +36,11 @@ const Appointments = () => {
                 />
             </TouchableOpacity>
             <ScrollView style={styles.container}>
+                <LottieView
+                    autoPlay
+                    style={styles.anim}
+                    source={require("../../assets/lottie/history.json")}
+                />
                 <Text
                     style={{
                         fontSize: 20,
@@ -49,17 +55,17 @@ const Appointments = () => {
                     style={{
                         fontSize: 16,
                         alignSelf: "center",
-                        marginTop: 10,
+                        marginTop: 20,
                     }}
                 >
-                    No Upcoming Appointment Availabe
+                    No Upcoming Appointment Available
                 </Text>
 
                 <Text
                     style={{
                         fontSize: 20,
                         fontWeight: "bold",
-                        marginTop: 10,
+                        marginTop: 25,
                     }}
                 >
                     Past Appointments
@@ -68,10 +74,10 @@ const Appointments = () => {
                     style={{
                         fontSize: 16,
                         alignSelf: "center",
-                        marginTop: 10,
+                        marginTop: 20,
                     }}
                 >
-                    No History Availabe
+                    No Appointment History Availabe
                 </Text>
             </ScrollView>
         </>
@@ -85,5 +91,9 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 50,
         paddingHorizontal: 15,
+    },
+    anim: {
+        width: width * 0.9,
+        resizeMode: "contain",
     },
 });
