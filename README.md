@@ -2,11 +2,14 @@
 
 This project aims to develop a Doctor Appointment Booking & Live Chat App to streamline the process of scheduling appointments and providing medical consultations. This app is be designed to be user-friendly, accessible, and secure, allowing patients to easily find doctors, book appointments, and communicate with them in real time.
 
-![Img1](https://github.com/ABHINAV-JHA-27/HealthHub-Connect/assets/83292277/fa39c9c3-0480-4f36-bbfa-f21fe644302b)
+<img src="https://github.com/ABHINAV-JHA-27/HealthHub-Connect/assets/83292277/fa39c9c3-0480-4f36-bbfa-f21fe644302b" width=30% height=30%>
+<!-- ![Img1](https://github.com/ABHINAV-JHA-27/HealthHub-Connect/assets/83292277/fa39c9c3-0480-4f36-bbfa-f21fe644302b) -->
 
-![Img2](https://github.com/ABHINAV-JHA-27/HealthHub-Connect/assets/83292277/ffbac60b-23c9-470e-9631-d046d350c74b)
+<img src="https://github.com/ABHINAV-JHA-27/HealthHub-Connect/assets/83292277/ffbac60b-23c9-470e-9631-d046d350c74b" width=30% height=30%>
+<!-- ![Img2](https://github.com/ABHINAV-JHA-27/HealthHub-Connect/assets/83292277/ffbac60b-23c9-470e-9631-d046d350c74b) -->
 
-![Img3](https://github.com/ABHINAV-JHA-27/HealthHub-Connect/assets/83292277/0ae9ec72-a35e-4dc0-82d8-dca720af8be7)
+<img src="https://github.com/ABHINAV-JHA-27/HealthHub-Connect/assets/83292277/0ae9ec72-a35e-4dc0-82d8-dca720af8be7" width=30% height=30%>
+<!-- ![Img3](https://github.com/ABHINAV-JHA-27/HealthHub-Connect/assets/83292277/0ae9ec72-a35e-4dc0-82d8-dca720af8be7) -->
 
 <!--The app will feature a comprehensive database of doctors, categorized by their specialty, location, and availability. Patients will be able to browse through the doctor profiles, read reviews, and select the most suitable doctor for their needs. The appointment booking process will be simplified, allowing patients to choose a convenient time slot and receive confirmation notifications.
 
