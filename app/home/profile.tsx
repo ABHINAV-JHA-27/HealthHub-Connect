@@ -4,6 +4,7 @@ import {
     ScrollView,
     StyleSheet,
     Text,
+    TouchableOpacity,
     View,
 } from "react-native";
 import React, { useContext } from "react";
@@ -11,36 +12,59 @@ import { Context_ } from "../../context/AuthContext";
 import PreviosAppointmentCard from "../../components/previosAppointmentCard";
 import HealthCard from "../../components/HealthCard";
 import UserDetailCard from "../../components/userDetailCard";
+import { useNavigation } from "expo-router";
 const { width, height } = Dimensions.get("window");
 
 const Profile = () => {
     const data = useContext(Context_);
+    const navigation = useNavigation();
     return (
-        <ScrollView style={styles.container}>
-            <View style={styles.profileImageContainer}>
-                <Image
-                    source={require("../../assets/images/profile.png")}
-                    style={{
-                        width: "95%",
-                        height: "95%",
-                        resizeMode: "contain",
-                    }}
-                />
-            </View>
-            <Text
+        <>
+            <TouchableOpacity
                 style={{
-                    fontSize: 20,
-                    fontWeight: "bold",
-                    alignSelf: "center",
-                    marginTop: 10,
+                    position: "absolute",
+                    top: 50,
+                    left: 15,
+                    zIndex: 100,
+                    backgroundColor: "white",
+                    padding: 10,
+                    borderRadius: 20,
+                }}
+                onPress={() => {
+                    navigation.goBack();
                 }}
             >
-                {data?.user?.username}
-            </Text>
-            <UserDetailCard />
-            <PreviosAppointmentCard />
-            <HealthCard />
-        </ScrollView>
+                <Image
+                    source={require("../../assets/images/back.png")}
+                    style={{ width: 25, height: 25 }}
+                />
+            </TouchableOpacity>
+            <ScrollView style={styles.container}>
+                <View style={styles.profileImageContainer}>
+                    <Image
+                        source={require("../../assets/images/profile.png")}
+                        style={{
+                            width: "95%",
+                            height: "95%",
+                            resizeMode: "contain",
+                        }}
+                    />
+                </View>
+                <Text
+                    style={{
+                        fontSize: 20,
+                        fontWeight: "bold",
+                        alignSelf: "center",
+                        marginTop: 10,
+                    }}
+                >
+                    {data?.user?.username}
+                </Text>
+                <UserDetailCard />
+                <PreviosAppointmentCard />
+                <HealthCard />
+            </ScrollView>
+        </>
     );
 };
 

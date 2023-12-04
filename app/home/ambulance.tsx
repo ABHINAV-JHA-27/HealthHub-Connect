@@ -1,12 +1,53 @@
-import { Dimensions, ScrollView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {
+    Dimensions,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import React, { useCallback, useMemo, useRef } from "react";
 import MapView from "react-native-maps";
 import AmbulanceCard from "../../components/AmbulanceCard";
+import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import { useNavigation } from "expo-router";
 const { width, height } = Dimensions.get("window");
 
 const Ambulance = () => {
+    const sheetRef = useRef<BottomSheet>(null);
+    const handleSheetChange = useCallback((index) => {
+        console.log("handleSheetChange", index);
+    }, []);
+    const handleSnapPress = useCallback((index) => {
+        sheetRef.current?.snapToIndex(index);
+    }, []);
+    const handleClosePress = useCallback(() => {
+        sheetRef.current?.close();
+    }, []);
+    const snapPoints = useMemo(() => ["25%", "50%", "90%"], []);
+    const navigation = useNavigation();
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
+            <TouchableOpacity
+                style={{
+                    position: "absolute",
+                    top: 50,
+                    left: 15,
+                    zIndex: 100,
+                    backgroundColor: "white",
+                    padding: 10,
+                    borderRadius: 20,
+                }}
+                onPress={() => {
+                    navigation.goBack();
+                }}
+            >
+                <Image
+                    source={require("../../assets/images/back.png")}
+                    style={{ width: 25, height: 25 }}
+                />
+            </TouchableOpacity>
             <MapView
                 style={styles.map}
                 initialRegion={{
@@ -16,19 +57,21 @@ const Ambulance = () => {
                     longitudeDelta: 0.0421,
                 }}
             />
-            <View
-                style={{
-                    marginTop: 20,
-                    paddingHorizontal: 15,
-                }}
+            <BottomSheet
+                ref={sheetRef}
+                index={1}
+                snapPoints={snapPoints}
+                onChange={handleSheetChange}
             >
-                <AmbulanceCard />
-                <AmbulanceCard />
-                <AmbulanceCard />
-                <AmbulanceCard />
-                <AmbulanceCard />
-            </View>
-        </ScrollView>
+                <BottomSheetScrollView
+                    contentContainerStyle={styles.contentContainer}
+                >
+                    {[...new Array(10)].map((_, i) => (
+                        <AmbulanceCard key={i.toString() + "ambulance"} />
+                    ))}
+                </BottomSheetScrollView>
+            </BottomSheet>
+        </View>
     );
 };
 
@@ -39,7 +82,10 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     map: {
-        width: width,
-        height: height * 0.6,
+        ...StyleSheet.absoluteFillObject,
+    },
+    contentContainer: {
+        backgroundColor: "white",
+        paddingHorizontal: 15,
     },
 });

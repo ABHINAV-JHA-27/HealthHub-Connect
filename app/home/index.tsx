@@ -8,14 +8,21 @@ const { width, height } = Dimensions.get("window");
 const Page = () => {
     const data = useContext(Context_);
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <Text style={styles.welcomeText}>Hello {data?.user?.username}</Text>
             <QuickActions />
             <Text style={styles.label}>Doctors Nearby</Text>
-            {[...new Array(25)].map((_, i) => (
-                <DoctorsNearBy key={`Doctor-id-${i}`} />
-            ))}
-        </ScrollView>
+            <ScrollView
+                style={{
+                    height: height * 0.58,
+                }}
+                showsVerticalScrollIndicator={false}
+            >
+                {[...new Array(25)].map((_, i) => (
+                    <DoctorsNearBy key={`Doctor-id-${i}`} />
+                ))}
+            </ScrollView>
+        </View>
     );
 };
 
